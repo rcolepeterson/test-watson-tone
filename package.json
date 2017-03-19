@@ -1,0 +1,15 @@
+{
+  "name": "tone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv-extended": "^1.0.4",
+    "watson-developer-cloud": "^2.26.0"
+  }
+}
