@@ -6,6 +6,12 @@
 
 var dotenv = require('dotenv-extended').load();
 var watson = require('watson-developer-cloud');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 var tone_analyzer = watson.tone_analyzer({
   username: process.env.USER_NAME,
@@ -14,6 +20,36 @@ var tone_analyzer = watson.tone_analyzer({
   version_date: '2016-05-19'
 });
 
+
+
+app.get('/analyze', (req, res) => {
+  res.send('analyzed');
+});
+
+// curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are here and why are we ding this?"}' http://localhost:3000/analyzeThis
+app.post('/analyzeThis', function (req, res) {
+  var input = req.body.input || req.body;
+  tone_analyzer.tone({ 
+  text: input.text,
+  tone: 'emotion',
+  sentences:false
+ },
+  function(err, tone) {
+    if (err)
+      console.log(err);
+    else
+      console.log(JSON.stringify(tone, null, 2));
+      var resObject = JSON.stringify(tone, null, 2);
+      res.send(resObject);
+  });
+});
+
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+
+
+/*
 tone_analyzer.tone({ 
   text: 'A word is dead when it is said, some say. Emily Dickinson',
   tone: 'emotion',
@@ -25,3 +61,4 @@ tone_analyzer.tone({
     else
       console.log(JSON.stringify(tone, null, 2));
 });
+*/
