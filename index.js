@@ -35,7 +35,7 @@ app.post('/analyzeThis',  (req, res, next) => {
   var input = req.body.input || req.body;
   
   if (!input.text){
-    next(new errors.NotAcceptable("no input"));
+    next(new errors.NotAcceptable('No input. expecting a property named text holding a string'));
   }
   
   tone_analyzer.tone({ 
