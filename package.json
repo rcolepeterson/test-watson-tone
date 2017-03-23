@@ -17,6 +17,7 @@
   "dependencies": {
     "firebase-rest": "^1.0.0",
     "firebase-token-generator": "^2.0.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "throw.js": "^3.0.1"
   }
 }
