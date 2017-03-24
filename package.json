@@ -8,6 +8,10 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://Cole.Peterson@git.na.possible.com/scm/pc/watson-tone.git"
+  },
   "devDependencies": {
     "dotenv-extended": "^1.0.4",
     "watson-developer-cloud": "^2.26.0",
