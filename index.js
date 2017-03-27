@@ -29,15 +29,15 @@ app.get('/', (req, res) => {
   res.send('You have reached the Tone Analyzer');
 });
 
-// curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are here and why are we ding this?"}' http://localhost:3000/analyzeThis
-app.post('/analyzeThis',  (req, res, next) => {
-  
+// curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are here and why are we ding this?"}' http://localhost:3000/v1/analyzeThis
+app.post('/v1/analyzeThis',  (req, res, next) => {
+
   let input = req.body.input || req.body;
- 
+
   if (!input.text)
     next(new errors.NotAcceptable('No input. expecting a property named text holding a string'));
-  
-  tone_analyzer.tone({ 
+
+  tone_analyzer.tone({
   text: input.text
  },
   (err, tone) => {
