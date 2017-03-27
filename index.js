@@ -6,6 +6,10 @@ const port = process.env.port || 3000;
 const errors = require('throw.js');
 const app = express();
 
+// Require and start in the startup of your application:
+require('@google-cloud/debug-agent').start({ allowExpressions: true });
+// No auth necessary if your code is running on Google Cloud Platform.
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 

@@ -14,17 +14,16 @@
     "type": "git",
     "url": "https://Cole.Peterson@git.na.possible.com/scm/pc/watson-tone.git"
   },
-  "devDependencies": {
-   
-  },
+  "devDependencies": {},
   "dependencies": {
-    "dotenv-extended": "^1.0.4",
-    "watson-developer-cloud": "^2.26.0",
+    "@google-cloud/debug-agent": "^1.0.0",
     "body-parser": "^1.15.2",
+    "dotenv-extended": "^1.0.4",
     "express": "^4.14.0",
     "firebase-rest": "^1.0.0",
     "firebase-token-generator": "^2.0.0",
     "request": "^2.81.0",
-    "throw.js": "^3.0.1"
+    "throw.js": "^3.0.1",
+    "watson-developer-cloud": "^2.26.0"
   }
 }

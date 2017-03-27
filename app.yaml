@@ -20,4 +20,4 @@ env: flex
 skip_files:
  - ^node_modules$
 
- service: servicetest
+service: watson-tone
