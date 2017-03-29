@@ -21,3 +21,6 @@ skip_files:
  - ^node_modules$
 
 service: watson-tone
+
+env_variables:
+  MY_VAR: 'my value'

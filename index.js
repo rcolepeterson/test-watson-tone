@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('You have reached the Tone Analyzer');
+  res.send('You have reached the Tone Analyzer: ' + process.env.USER_NAME);
 });
 
 // curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are here and why are we ding this?"}' http://localhost:3000/v1/analyzeThis
