@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.send('You have reached the Tone Analyzer: ' + process.env.USER_NAME);
 });
 
-// curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are here and why are we ding this?"}' http://localhost:3000/v1/analyzeThis
+// curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are you here and why are we doing this?"}' http://localhost:3000/v1/analyzeThis
 app.post('/v1/analyzeThis',  (req, res, next) => {
 
   let input = req.body.input || req.body;
