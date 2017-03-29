@@ -1,3 +1,6 @@
+// Require and start in the startup of your application:
+require('@google-cloud/debug-agent').start({ allowExpressions: true });
+// No auth necessary if your code is running on Google Cloud Platform.
 const dotenv = require('dotenv-extended').load();
 const watson = require('watson-developer-cloud');
 const express = require('express');
@@ -6,9 +9,7 @@ const port = process.env.port || 3000;
 const errors = require('throw.js');
 const app = express();
 
-// Require and start in the startup of your application:
-require('@google-cloud/debug-agent').start({ allowExpressions: true });
-// No auth necessary if your code is running on Google Cloud Platform.
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -39,7 +40,7 @@ app.post('/v1/analyzeThis',  (req, res, next) => {
   let input = req.body.input || req.body;
 
   if (!input.text)
-    next(new errors.NotAcceptable('No input. expecting a property named text holding a string'));
+    next(new errors.NotAcceptable('No input on body. expecting a input object with a property named text holding a string'));
 
   tone_analyzer.tone({
   text: input.text
@@ -55,5 +56,5 @@ app.post('/v1/analyzeThis',  (req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log('Example app listening on port 3000!');
+  console.log(`Example app listening on ${port}`);
 });
