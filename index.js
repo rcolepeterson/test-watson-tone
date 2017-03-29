@@ -31,7 +31,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('You have reached the Tone Analyzer: ' + process.env.USER_NAME);
+  res.status(200).send('You have reached the Tone Analyzer: ' + process.env.USER_NAME);
 });
 
 // curl -H "Content-Type: application/json" -X POST -d '{"text":"Why are you here and why are we doing this?"}' http://localhost:3000/v1/analyzeThis
@@ -55,6 +55,14 @@ app.post('/v1/analyzeThis',  (req, res, next) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on ${port}`);
-});
+if (module === require.main) {
+  // [START server]
+  // Start the server
+  const server = app.listen(process.env.PORT || 8080, () => {
+    const port = server.address().port;
+    console.log(`App listening on port ${port}`);
+  });
+  // [END server]
+}
+
+module.exports = app;
